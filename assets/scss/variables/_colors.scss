@@ -1,0 +1,11 @@
+:root {
+    --brand-black: 21, 21, 21;
+    --color-brand-black: rgb(var(--brand-black));
+    --brand-blue: 0, 8, 250;
+    --color-brand-blue: rgb(var(--brand-blue));
+}
+
+$brandBlack: var(--color-brand-black);
+$brandBlue: var(--color-brand-blue);
+
+

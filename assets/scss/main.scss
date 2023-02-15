@@ -1,0 +1,13 @@
+@import "./animations";
+
+body {
+    // background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+    background: linear-gradient(to right, #121213, #121213);
+    font-family: "Nunito", sans-serif;
+    overflow-x: hidden;
+    cursor: none;
+    overflow-y: scroll;
+    height: 100vh;
+    scroll-snap-points-y: repeat(100vh);
+    scroll-snap-type: y mandatory;
+}
