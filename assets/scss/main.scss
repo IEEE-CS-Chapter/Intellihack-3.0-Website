@@ -1,13 +1,28 @@
 @import "./animations";
 
+
+
+
 body {
     // background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
-    background: linear-gradient(to right, #121213, #121213);
-    font-family: "Nunito", sans-serif;
+    background: #151515;
+    font-family: "Poppins", sans-serif;
     overflow-x: hidden;
     cursor: none;
-    overflow-y: scroll;
-    height: 100vh;
-    scroll-snap-points-y: repeat(100vh);
-    scroll-snap-type: y mandatory;
+    overflow-y: auto;
+    // height: 100vh;
+    scroll-behavior: smooth;
+    color: #151515;
+}
+
+main {
+    overflow-x: hidden;
+}
+
+section {
+    overflow-x: hidden;
+}
+
+html {
+    scroll-behavior: smooth;
 }
