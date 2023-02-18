@@ -21,13 +21,13 @@
                     ieeecsucsc@gmail.com
                 </a>
                 <div class="social-links">
-                    <a href="">
+                    <a href="https://www.facebook.com/IEEECSUCSC?mibextid=ZbWKwL">
                         <Icon name="logos:facebook" />
                     </a>
-                    <a href="">
+                    <a href="https://www.linkedin.com/company/ieee-computer-society-student-branch-chapter-of-ucsc/">
                         <Icon name="skill-icons:linkedin" />
                     </a>
-                    <a href="">
+                    <a href="https://instagram.com/ieee.cs.ucsc?igshid=OTJlNzQ0NWM=">
                         
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256">
                             <g fill="none">
