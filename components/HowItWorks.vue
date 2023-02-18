@@ -104,7 +104,6 @@ onMounted(() => {
     const indicatorObserver = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
-                console.log("Intersection Observer")
                 const indicator = entry.target as HTMLDivElement;
                 const key = indicator.dataset.indicator
                 const event = document.querySelector<HTMLDivElement>(`[data-event="${key}"]`)

@@ -28,5 +28,9 @@
         @media (min-width: 1536px) {
             @content;
         }
+    } else {
+        @media (min-width: $point) {
+            @content;
+        } 
     }
 }
