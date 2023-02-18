@@ -28,7 +28,7 @@
                         <Icon name="skill-icons:linkedin" />
                     </a>
                     <a href="https://instagram.com/ieee.cs.ucsc?igshid=OTJlNzQ0NWM=">
-                        
+
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256">
                             <g fill="none">
                                 <rect width="256" height="256" fill="url(#skillIconsInstagram0)" rx="60" />
@@ -87,14 +87,24 @@
         margin: 0 auto;
 
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 2rem;
+        grid-template-columns: 1fr;
+        gap: 1rem;
 
         @include mq(lg) {
-            width: 70%;
+            grid-template-columns: repeat(3, 1fr);
+            // width: 80%;
+            gap: 1.5rem;
+
+        }
+
+        @include mq(xl) {
+            width: 100%;
+            gap: 2rem;
+
         }
     }
 }
+
 
 h2 {
     color: $brandBlue;
@@ -126,13 +136,46 @@ h2 {
 
 
 .contact-card {
-    width: 95vw;
+    width: 90vw;
+    margin: 0 auto;
     aspect-ratio: 2 / 2.5;
     border-radius: 0.5rem;
     box-shadow: 0px 0px 47px -15px rgba(0, 0, 0, 0.69);
 
 
+    @include mq(sm) {
+        width: 70w;
+    }
+
+
+    @include mq(md) {
+        width: 60vw;
+    }
+
+    &:first-child {
+        grid-row: 1 / 2;
+
+        @include mq(lg) {
+            grid-row: 1 / 2;
+            grid-column: 1 / 2;
+        }
+    }
+
+    &:last-child {
+        grid-row: 2 / 3;
+
+        @include mq(lg) {
+            grid-row: 1 / 2;
+            grid-column: 3 / 4;
+        }
+    }
+
     @include mq(lg) {
+        width: 200px;
+
+    }
+
+    @include mq(xl) {
         width: 300px;
     }
 
@@ -162,6 +205,8 @@ h2 {
         span {
             font-size: 0.9rem;
             color: $brandBlue;
+            overflow-x: hidden;
+            text-overflow: ellipsis;
         }
     }
 }
@@ -175,10 +220,14 @@ h2 {
 
 
 .email {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     display: flex;
     align-items: center;
     gap: 1rem;
+
+    @include mq(lg) {
+        font-size: 1.2rem;
+    }
 }
 
 .social-links {
@@ -190,11 +239,10 @@ h2 {
     font-size: 2rem;
     gap: 2rem;
 
-    & > a:last-child svg {
+    &>a:last-child svg {
         width: 2rem;
         height: 2rem;
         margin-top: 0.6rem;
     }
 }
-
 </style>

@@ -58,11 +58,11 @@ export default defineNuxtConfig({
           meta: [
             {
               name: "description",
-              content: `
-                        Credits: {
-                          "AJF-12 "Dvergr": (https://skfb.ly/FMID) by Star Conflict is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
-                          "asteroid": (https://skfb.ly/COwN) by admone is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
-                        }`,
+              content: `Sri Lanka's First ever Machine Learning Hackathon organized by the IEEE Computer Society Student Branch Chapter of UCSC.
+              With the primary goal of introducing contestants to the concept of Machine Learning,
+              or the use of artificial intelligence to create self-learning systems, the hackathon includes several
+              phases and sub-events. IntelliHack 3.0 is aimed to provide participants with a strong understanding of
+              machine learning so that they can come up with solutions that help them make better judgments.`,
             },
           ],
         },
@@ -71,10 +71,23 @@ export default defineNuxtConfig({
       runtimeConfig: {
         public: {
           siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://intellihack.ucscieee.lk',
-          siteName: `IntelliHack - SL's Leading ML Hackathon`,
-          siteDescription: 'Welcome to my awesome site!',
-          language: 'en-US', // prefer more explicit language codes like `en-AU` over `en`
+          siteName: `IntelliHack 3.0`,
+          siteDescription: `Sri Lanka's First ever Machine Learning Hackathon organized by the IEEE Computer Society Student Branch Chapter of UCSC.
+          With the primary goal of introducing contestants to the concept of Machine Learning,
+          or the use of artificial intelligence to create self-learning systems, the hackathon includes several
+          phases and sub-events. IntelliHack 3.0 is aimed to provide participants with a strong understanding of
+          machine learning so that they can come up with solutions that help them make better judgments.`,
+          language: 'en-US',
         }
+      },
+
+      nitro: {
+        compressPublicAssets: {
+          brotli: true,
+          gzip: true,
+        },
+    
+        preset: "cloudflare-pages",
       },
       
 })
