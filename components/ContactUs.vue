@@ -56,7 +56,7 @@
                         </svg>
                     </a>
                 </div>
-                <img src="~/assets/images/CS Chapter Logo.webp" alt="IEEE CS Chapter Logo">
+                <img src="/CS Chapter Logo.webp" alt="IEEE CS Chapter Logo">
             </div>
             <div class="contact-card">
                 <img src="~/assets/images/contacts/Surani.webp" alt="Event Treasurer's Photo">
