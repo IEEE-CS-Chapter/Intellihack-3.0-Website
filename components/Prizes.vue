@@ -3,13 +3,13 @@
         <h2>Prizes</h2>
         <div>
             <div class="prize-card">
-                <h3>Second Place</h3>
+                <h3>Third Place</h3>
             </div>
             <div class="prize-card">
                 <h3>First Place</h3>
             </div>
             <div class="prize-card">
-                <h3>Third Place</h3>
+                <h3>Second Place</h3>
             </div>
         </div>
     </section>
@@ -49,7 +49,7 @@
         }
 
         @include mq(xl) {
-            // width: 60%;
+            width: 80%;
             gap: 5rem;
         }
     }
@@ -114,11 +114,11 @@ h2 {
 
     &:nth-child(1) {
         grid-column: 1 / 2;
-        grid-row: 2 / 3;
+        grid-row: 3 / 4;
 
 
         @include mq(md) {
-            grid-column: 1 / 2;
+            grid-column: 3 / 4;
             grid-row: 2 / 3;
         }
 
@@ -157,10 +157,10 @@ h2 {
 
     &:nth-child(3) {
         grid-column: 1 / 2;
-        grid-row: 3 / 4;
+        grid-row: 2 / 3;
 
         @include mq(md) {
-            grid-column: 3 / 4;
+            grid-column: 1 / 2;
             grid-row: 2 / 3;
         }
 
