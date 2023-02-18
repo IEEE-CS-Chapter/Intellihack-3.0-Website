@@ -83,7 +83,6 @@ onMounted(() => {
             slide.addEventListener("click", () => {
                 --zIndex;
                 current = (current + 1) % (slideImages.value as HTMLDivElement[]).length;
-                console.log(`Current is ${current}`)
 
                 let midAngle = 15;
                 if (direction === "-125%") {
@@ -91,7 +90,6 @@ onMounted(() => {
                 }
 
                 const currentImage = (slideImages.value as HTMLDivElement[])[current];
-                console.log(currentImage)
 
                 const flipTimeline = gsap.timeline();
                 flipTimeline
@@ -129,7 +127,6 @@ let direction = "125%";
 function nextSaying() {
     --zIndex;
     current = (current + 1) % (slideImages.value as HTMLDivElement[]).length;
-    console.log(`Current is ${current}`)
 
 
     let midAngle = 15;

@@ -209,7 +209,7 @@ async function createTeamAndUploadSubmission() {
         }
     }
     catch (error) {
-        console.log(error)
+        alert(error)
     } finally {
         isLoading.value = false
     }

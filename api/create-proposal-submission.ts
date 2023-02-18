@@ -28,12 +28,11 @@ export async function createTeam(proposalData: RawTeam) {
       universityOrInstitute,
       proposal: "",
     });
-    console.log(proposal)
     const url = await uploadProposal(teamDocRef.id, proposal);
     await updateDoc(teamDocRef, {
       proposal: url,
     } as UpdateInterface<Partial<Team>>);
   } catch (err) {
-    console.log(err);
+   throw new Error((err as Error).message); 
   }
 }
