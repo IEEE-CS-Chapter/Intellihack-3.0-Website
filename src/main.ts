@@ -3,10 +3,10 @@ import VueLazyLoad from 'vue3-lazyload'
 import "uno.css";
 import '@unocss/reset/tailwind.css'
 import "@/assets/scss/main.scss";
+// @ts-ignore
 import App from "./App.vue";
-import "@/firebase.config"
 
-export const createApp = ViteSSG(App, ({ app, isClient, initialState }) => {
+export const createApp = ViteSSG(App, ({ app }) => {
     app.use(VueLazyLoad, {
         
     })

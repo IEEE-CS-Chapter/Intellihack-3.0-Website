@@ -238,7 +238,7 @@ h2 {
 
 .social-links {
     display: flex;
-    flex-direction: column;
+    // flex-direction: column;
     align-items: center;
     margin-block: 1.5rem;
 
@@ -248,7 +248,6 @@ h2 {
     &>a:last-child svg {
         width: 2rem;
         height: 2rem;
-        margin-top: 0.6rem;
     }
 }
 </style>
