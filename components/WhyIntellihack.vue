@@ -34,15 +34,15 @@ import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide } from 'vue3-carousel'
 
 const images = [
-    "https://firebasestorage.googleapis.com/v0/b/intellihack.appspot.com/o/images921%2Fintelli1.jpg?alt=media&token=3dbe51e8-5ccd-4fc5-8e2d-395b8cdfca99",
-    "https://firebasestorage.googleapis.com/v0/b/intellihack.appspot.com/o/images921%2Fintelli2.jpg?alt=media&token=6a7b5170-f128-4112-8304-63f6aebf74f3",
-    "https://firebasestorage.googleapis.com/v0/b/intellihack.appspot.com/o/images921%2Fintelli3.jpg?alt=media&token=1996ab46-6bb4-4bdd-b4af-d60a792eaf7b",
-    "https://firebasestorage.googleapis.com/v0/b/intellihack.appspot.com/o/images921%2Fintelli4.jpg?alt=media&token=9d803190-b24e-4a16-bc67-b55e21d4abe3",
-    "https://firebasestorage.googleapis.com/v0/b/intellihack.appspot.com/o/images921%2Fintelli5.jpg?alt=media&token=4f56a270-8595-4431-a2aa-7bcf605e620e",
-    "https://firebasestorage.googleapis.com/v0/b/intellihack.appspot.com/o/images921%2Fintelli6.jpg?alt=media&token=380f12fc-fe60-4ab6-9aae-af3c485988b9",
-    "https://firebasestorage.googleapis.com/v0/b/intellihack.appspot.com/o/images921%2Fintelli7.jpg?alt=media&token=b4535cb5-b83e-479b-a638-28800e7c0b4e",
-    "https://firebasestorage.googleapis.com/v0/b/intellihack.appspot.com/o/images921%2Fintelli8.jpg?alt=media&token=80e18f0e-b891-43d1-9552-7a592ebfef49",
-    "https://firebasestorage.googleapis.com/v0/b/intellihack.appspot.com/o/images921%2Fintelli9.jpg?alt=media&token=c21b7ef9-1eb0-4101-9dc5-b5863594258d"
+    "/memories/intelli1.webp",
+    "/memories/intelli2.webp",
+    "/memories/intelli3.webp",
+    "/memories/intelli4.webp",
+    "/memories/intelli5.webp",
+    "/memories/intelli6.webp",
+    "/memories/intelli7.webp",
+    "/memories/intelli8.webp",
+    "/memories/intelli9.webp",
 ]
 
 </script>
@@ -85,7 +85,7 @@ const images = [
         width: 65vw;
         height: 60vh;
         padding: 2rem;
-        gap: 2rem;  
+        gap: 2rem;
     }
 
     @include mq(lg) {
