@@ -174,7 +174,6 @@ $split-color: $brandBlue;
     margin-bottom: 1rem;
     position: relative;
     color: transparent;
-    cursor: none;
 
     // === Split Line =====
     &::before {

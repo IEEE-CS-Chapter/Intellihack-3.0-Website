@@ -36,7 +36,7 @@ An Experienced individual from Google Developers Group Sri Lanka will be the spe
     title: "Proposal Submissions Open",
     description: `The first round of InteliHack is an Ideathon where participants can pitch their ideas and form teams. During this round, 
 participants must submit a proposal describing the machine learning solution to the problem within the selected area according to the given proposal template.`,
-    date: `18-02-2023`
+    date: `19-02-2023`
 },
 {
     key: 3,
