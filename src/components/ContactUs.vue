@@ -27,6 +27,9 @@
                     <a href="https://www.linkedin.com/company/ieee-computer-society-student-branch-chapter-of-ucsc/">
                         <IconLinkedin />
                     </a>
+                    <a href="https://youtube.com/@ieeecschapter8130">
+                        <IconYoutube />
+                    </a>
                     <a href="https://instagram.com/ieee.cs.ucsc?igshid=OTJlNzQ0NWM=">
 
                         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 256 256">
@@ -56,7 +59,7 @@
                         </svg>
                     </a>
                 </div>
-                <img src="/logos/cs-logo.webp" alt="IEEE CS Chapter Logo">
+                <img src="/logos/cs-logo.webp" alt="IEEE CS Chapter Logo" class="ieee-cs-logo">
             </div>
             <div class="contact-card">
                 <img v-lazy="{ src: '/contacts/Surani.webp' }" alt="Event Treasurer's Photo">
@@ -78,6 +81,7 @@
 <script setup lang="ts" >
 import IconGmail from "~icons/logos/google-gmail"
 import IconFacebook from "~icons/logos/facebook"
+import IconYoutube from "~icons/logos/youtube-icon" 
 import IconLinkedin from "~icons/skill-icons/linkedin"
 </script>
 
@@ -189,6 +193,7 @@ h2 {
     img {
         aspect-ratio: 1;
         object-fit: cover;
+        object-position: top;
         border-radius: 0.5rem;
     }
 
@@ -249,5 +254,10 @@ h2 {
         width: 2rem;
         height: 2rem;
     }
+}
+
+.ieee-cs-logo {
+    width: 200px;
+    margin-top: 2rem;
 }
 </style>
