@@ -12,7 +12,7 @@
             machine learning so that they can come up with solutions that help them make better judgments.
         </p>
         <a href="#submissions" class="cta">Register</a>
-        <img src="@/assets/images/logo.png" alt="Intellihack Logo" class="hero-logo">
+        <img src="@/assets/images/logo.webp" alt="Intellihack Logo" class="hero-logo">
         <img src="@/assets/images/robot.webp" alt="Robo Human Hybrid Woman" class="hero-img">
         <ScrollReminder />
 

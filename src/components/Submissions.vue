@@ -3,17 +3,23 @@
         <h2>Proposal Submissions</h2>
         <p class="text-center text-2xl font-bold">You can download</p>
         <a class="text-lg  text-[var(--color-brand-blue)]"
-            href="https://docs.google.com/document/d/1mrExAJwIrDrr4O2Uj9i0kvtFLac4Dwkh/edit?usp=sharing&ouid=116367104644039849362&rtpof=true&sd=true">
+            href="https://docs.google.com/document/d/1mrExAJwIrDrr4O2Uj9i0kvtFLac4Dwkh/edit?usp=sharing&ouid=116367104644039849362&rtpof=true&sd=true"
+            target="_blank">
+
             Proposal template here
             <IconExternalLinkFill />
         </a>
         <a class="text-lg  text-[var(--color-brand-blue)]"
-            href="https://drive.google.com/drive/folders/1nVO9421uGZjR5Ep6OIpRIO2gfqotY70n?usp=sharing">
+            href="https://drive.google.com/drive/folders/1nVO9421uGZjR5Ep6OIpRIO2gfqotY70n?usp=sharing"
+            target="_blank"
+            >
             Booklet here
             <IconExternalLinkFill />
         </a>
         <a class="text-lg  text-[var(--color-brand-blue)]"
-            href="https://drive.google.com/drive/folders/1drfWDhF2UbtIQaNknDaERVyjsxEyKI0l?usp=share_link">
+            href="https://drive.google.com/drive/folders/1drfWDhF2UbtIQaNknDaERVyjsxEyKI0l?usp=share_link"
+            target="_blank"
+            >
             Rules & Regulations
             <IconExternalLinkFill />
         </a>

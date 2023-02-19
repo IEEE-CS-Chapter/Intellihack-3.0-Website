@@ -3,13 +3,25 @@
         <h2>Prizes</h2>
         <div>
             <div class="prize-card">
-                <h3>Third Place</h3>
+                <div class="prize-card__details">
+                    <h3>Third Place</h3>
+                    <img src="@/assets/images/third_place.png" alt="Bronze Laurel">
+                    <p>Rs. 50 000</p>
+                </div>
             </div>
             <div class="prize-card">
-                <h3>First Place</h3>
+                <div class="prize-card__details">
+                    <h3>First Place</h3>
+                    <img src="@/assets/images/first_place.png" alt="Gold Laurel">
+                    <p>Rs. 100 000</p>
+                </div>
             </div>
             <div class="prize-card">
-                <h3>Second Place</h3>
+                <div class="prize-card__details">
+                    <h3>Second Place</h3>
+                    <img src="@/assets/images/second_place.png" alt="Silver Laurel">
+                    <p>Rs. 75 000</p>
+                </div>
             </div>
         </div>
     </section>
@@ -87,10 +99,18 @@ h2 {
     background-color: #07182E;
     position: relative;
     display: flex;
+    flex-direction: column;
+    gap: 1rem;
     place-content: center;
     place-items: center;
     overflow: hidden;
     border-radius: 20px;
+    transition: all 0.3s ease-in-out;
+
+
+    &:hover {
+        transform: scale(1.05);
+    }
 
 
     @include mq(sm) {}
@@ -176,12 +196,28 @@ h2 {
         }
     }
 
-    &::after {
+    &__details {
         content: '';
         position: absolute;
-        background: #07182E;
+        background-color: #07182E;
         inset: 5px;
         border-radius: 15px;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        // justify-content: center;
+        gap: 1.5rem;
+
+
+        img {
+            width: 75%;
+        }
+
+        p {
+            color: #fff;
+            font-size: 1.4rem;
+        }
     }
 
     h3 {

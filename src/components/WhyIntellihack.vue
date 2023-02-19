@@ -144,8 +144,8 @@ export default {
 
 
     @include mq(lg) {
-        font-size: 1.1rem;
-        line-height: 1;
+        font-size: 1rem;
+        line-height: 1.5;
         height: 80%;
     }
 }

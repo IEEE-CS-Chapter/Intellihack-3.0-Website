@@ -189,7 +189,7 @@ h2 {
     top: 0;
     left: 0;
     right: 0;
-    background-color: lighten($color: blue, $amount: 0);
+    background-color: $brandBlue;
     border-radius: 100px;
 }
 

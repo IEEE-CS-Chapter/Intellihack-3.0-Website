@@ -7,12 +7,13 @@
     <div id="nav-menu" :class="isActive ? 'active' : ''" class="flex items-center justify-center">
         <div class="Menu">
             <ul class="Menu-list" data-offset="10">
-                <a class="Menu-list-item" v-for="linkMap in linkMapList" :key="linkMap.text" :href="linkMap.link"
-                    :ref="el => linkRefs.push(el as HTMLAnchorElement)">
-                    {{ linkMap.text }}
-                    <span class="Mask"><span>{{ linkMap.text }}</span></span>
-                    <span class="Mask"><span>{{ linkMap.text }}</span></span>
-                </a>
+                <li v-for="linkMap in linkMapList" :key="linkMap.text" @click="isActive = false">
+                    <a class="Menu-list-item" :href="linkMap.link" :ref="el => linkRefs.push(el as HTMLAnchorElement)">
+                        {{ linkMap.text }}
+                        <span class="Mask"><span>{{ linkMap.text }}</span></span>
+                        <span class="Mask"><span>{{ linkMap.text }}</span></span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
@@ -51,13 +52,13 @@ onMounted(() => {
     const cursorInner = document.querySelector<HTMLDivElement>("#cursor__inner")
     linkRefs.value.forEach((linkRef, index) => {
         linkRef.addEventListener('mouseenter', () => {
-            cursor ? cursor.style.width =  "2.5rem" : void 0
-            cursor ? cursor.style.height =  "2.5rem" : void 0
+            cursor ? cursor.style.width = "2.5rem" : void 0
+            cursor ? cursor.style.height = "2.5rem" : void 0
         })
 
         linkRef.addEventListener('mouseleave', () => {
-            cursor ? cursor.style.width =  "1.5rem" : void 0
-            cursor ? cursor.style.height =  "1.5rem" : void 0
+            cursor ? cursor.style.width = "1.5rem" : void 0
+            cursor ? cursor.style.height = "1.5rem" : void 0
         })
 
     })
@@ -142,7 +143,7 @@ onMounted(() => {
 
 // === Variables =====
 $perspective: 60rem;
-$font-size: 4rem;
+$font-size: 3.5rem;
 $mobile-font-size: 2.75rem;
 $split-position: 49%;
 $split-thickness: 4px;
@@ -234,5 +235,4 @@ $split-color: $brandBlue;
         transform: scale(1);
     }
 }
-
 </style>
