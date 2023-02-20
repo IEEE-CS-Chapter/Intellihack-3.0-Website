@@ -1,6 +1,5 @@
 <template>
-    <div class="nav-toggle" :class="isActive ? 'is-active' : ''" id="nav-toggle" @click="isActive = !isActive"
-        ref="navToggle">
+    <div class="nav-toggle" :class="isActive ? 'is-active' : ''" id="nav-toggle" @click="isActive = !isActive">
         <span class="line"></span>
         <span class="line"></span>
         <span class="line"></span>
@@ -21,8 +20,6 @@
 </template>
 
 <script setup lang="ts">
-import { gsap } from 'gsap'
-
 const isActive = ref(false)
 
 watch(isActive, () => {
@@ -60,14 +57,6 @@ const linkMapList = [{
 }]
 
 const linkRefs = ref<HTMLAnchorElement[]>([])
-
-
-
-onMounted(() => {
-    gsap.set([navToggle.value], { autoAlpha: 0, x: 50 })
-    gsap.to([navToggle.value], { autoAlpha: 1, x: 0, duration: 1, delay: 0.5 })
-})
-
 </script>
 
 
