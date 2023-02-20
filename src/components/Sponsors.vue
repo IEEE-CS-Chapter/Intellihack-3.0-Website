@@ -1,25 +1,25 @@
 <template>
     <section id="sponsors">
         <h2>Sponsors</h2>
-        <div id="platinum" ref="platinum">
+        <div id="platinum">
             <div class="sponsor-card">
                 <h3>Offcial Platinum Sponsor</h3>
                 <img src="@/assets/images/sponsors/dialogLogo.webp" alt="Dialog Logo">
             </div>
         </div>
-        <div id="gold" ref="gold">
+        <div id="gold">
             <div class="sponsor-card">
                 <h3>Official Gold Sponsor</h3>
                 <img src="@/assets/images/sponsors/lsegLogo.webp" alt="LSEG Logo">
             </div>
         </div>
-        <div id="silver" ref="silver">
+        <div id="silver">
             <div class="sponsor-card">
                 <h3>Official Silver Sponsor</h3>
                 <img src="@/assets/images/sponsors/ifsLogo.webp" alt="IFS Logo">
             </div>
         </div>
-        <div id="knowledge" ref="knowledge">
+        <div id="knowledge">
             <div class="sponsor-card">
                 <h3>Official Knowledge Partner</h3>
                 <img src="@/assets/images/sponsors/GDG_Logo.webp" alt="GDG Logo">
@@ -29,10 +29,48 @@
 </template>
 
 <script setup lang="ts">
-const platinum = ref<HTMLDivElement>()
-const gold = ref<HTMLDivElement>()
-const silver = ref<HTMLDivElement>()
-const knowledge = ref<HTMLDivElement>()
+import { gsap } from "gsap"
+
+let sponsors: HTMLDivElement;
+let platinum: HTMLDivElement;
+let gold: HTMLDivElement;
+let silver: HTMLDivElement;
+let knowledge: HTMLDivElement;
+
+onMounted(() => {
+    sponsors = document.getElementById('sponsors') as HTMLDivElement;
+    platinum = document.getElementById('platinum') as HTMLDivElement;
+    gold = document.getElementById('gold') as HTMLDivElement;
+    silver = document.getElementById('silver') as HTMLDivElement;
+    knowledge = document.getElementById('knowledge') as HTMLDivElement;
+
+    gsap.set([platinum,  silver], { autoAlpha: 0, x: -100 })
+    gsap.set([gold, knowledge], { autoAlpha: 0, x: 100 })
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                gsap.to([platinum, gold, silver, knowledge], {
+                    autoAlpha: 1,
+                    x: 0,
+                    duration: 0.5,
+                    stagger: 0.25,
+                    delay: 0.5,
+                })
+                observer.unobserve(entry.target)
+            }
+        })
+    }, {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.5
+    })
+
+    observer.observe(sponsors as HTMLDivElement)
+})
+
+
+
+
 </script>
 
 <style lang="scss" scoped>
