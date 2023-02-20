@@ -2,8 +2,8 @@
     <section id="contact-us">
         <h2>Contact Us</h2>
         <div>
-            <div class="contact-card">
-                <img v-lazy="{ src: '/contacts/Kawishka.webp' }" alt="Event Chair's Photo">
+            <div class="contact-card" id="kawishka">
+                <img v-lazy="{ src: '/contacts/Kawishka.webp' }" alt="Event Chair's Photo" >
                 <div>
                     <h3>Mr. Kavishka Fernando</h3>
                     <p>Event Chair</p>
@@ -61,7 +61,7 @@
                 </div>
                 <img src="/logos/cs-logo.webp" alt="IEEE CS Chapter Logo" class="ieee-cs-logo">
             </div>
-            <div class="contact-card">
+            <div class="contact-card" id="surani">
                 <img v-lazy="{ src: '/contacts/Surani.webp' }" alt="Event Treasurer's Photo">
                 <div>
                     <h3>Ms. Surani Sooriyarachchi</h3>
@@ -79,10 +79,50 @@
 </template>
 
 <script setup lang="ts" >
+import {gsap} from 'gsap'
 import IconGmail from "~icons/logos/google-gmail"
 import IconFacebook from "~icons/logos/facebook"
-import IconYoutube from "~icons/logos/youtube-icon" 
+import IconYoutube from "~icons/logos/youtube-icon"
 import IconLinkedin from "~icons/skill-icons/linkedin"
+
+
+
+let kawishka: HTMLDivElement;
+let surani: HTMLDivElement;
+let contactUs = document.getElementById('contact-us') as HTMLDivElement;
+
+
+
+onMounted(() => {
+
+    contactUs = document.getElementById('contact-us') as HTMLDivElement
+    kawishka = document.getElementById('kawishka') as HTMLDivElement
+    surani = document.getElementById('surani') as HTMLDivElement
+
+    gsap.set(kawishka, { autoAlpha: 0, x: -50 })
+    gsap.set(surani, { autoAlpha: 0, x: 50 })
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                gsap.to([kawishka, surani], {
+                    autoAlpha: 1,
+                    x: 0,
+                    duration: 0.5,
+                    delay: 0.5,
+                })
+                observer.unobserve(entry.target)
+            }
+        })
+    }, {
+        root: null,
+        rootMargin: "0px",
+    })
+
+    observer.observe(contactUs)
+})
+
+
+
 </script>
 
 <style lang="scss" scoped>

@@ -43,7 +43,6 @@ onMounted(() => {
     prizeCard2 = document.getElementById('price-card-2') as HTMLDivElement
     prizeCard1 = document.getElementById('price-card-1') as HTMLDivElement
 
-    gsap.set([prizeCard1, prizeCard2, prizeCard3], { autoAlpha: 0, y: 100 })
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
@@ -71,7 +70,6 @@ onMounted(() => {
 #prizes {
     width: 100vw;
     overflow: hidden;
-    // min-height: 100vh;
 
 
     &>div {
@@ -158,6 +156,9 @@ h2 {
     place-items: center;
     overflow: hidden;
     border-radius: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(100px);
 
     @include mq(sm) {}
 
