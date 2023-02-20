@@ -149,4 +149,30 @@ export default {
         height: 80%;
     }
 }
+
+
+.info p::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.info p::-webkit-scrollbar {
+  width: 5px;
+  background-color: transparent;
+}
+
+.info p::-webkit-scrollbar-thumb {
+  background-color: #fefefe;
+  border-radius: 100px;
+}
+
+.info p {
+scrollbar-color: transparent transparent;
+scrollbar-width: thin;
+}
+
+/* Firefox scrollbar thumb */
+.info p::-moz-scrollbar-thumb {
+background-color: #fefefe;
+border-radius: 100px;
+}
 </style>

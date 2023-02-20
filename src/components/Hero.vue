@@ -1,23 +1,24 @@
 <template>
     <main class="hero">
-        <h1>
+        <h1 class="mb-16">
             IntelliHack 3.0
         </h1>
         <p>
-            Sri Lanka's First ever Machine Learning Hackathon organized by the IEEE Computer Society Student Branch
-            Chapter of UCSC.
-            With the primary goal of introducing contestants to the concept of Machine Learning,
-            or the use of artificial intelligence to create self-learning systems, the hackathon includes several
-            phases and sub-events. IntelliHack 3.0 is aimed to provide participants with a strong understanding of
-            machine learning so that they can come up with solutions that help them make better judgments.
+            Proposal Submissions Closes in...
         </p>
-        <a href="#submissions" class="cta">Register</a>
+        <AppCountdown flip-card-id="Intellihach3" :labels="{
+            days: 'Days',
+            hours: 'Hours',
+            minutes: 'Minutes',
+            seconds: 'Seconds'
+        }" :deadline-date="new Date('2023-03-11 00:00:00')" label-color="#bbb" class="z-2"/>
+
+        <AppButton class="mt-8 z-2" href="#submissions" :is-link="true"> Register </AppButton>
         <img src="@/assets/images/logo.webp" alt="Intellihack Logo" class="hero-logo">
         <img src="@/assets/images/robot.webp" alt="Robo Human Hybrid Woman" class="hero-img">
         <ScrollReminder />
 
     </main>
-
 </template>
 
 <script setup lang="ts">
@@ -38,6 +39,11 @@ h1 {
     z-index: 2;
 
 
+    @include mq(sm) {
+        font-size: 3.5rem;
+    }
+
+
     @include mq(lg) {
         font-size: 4rem;
         text-align: left;
@@ -55,24 +61,57 @@ p {
     color: #fff;
     z-index: 2;
     text-align: center;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+
+    @include mq(sm) {
+        font-size: 1.3rem;
+    }
+
+    @include mq(md) {
+        text-align: left;
+        font-size: 1.4rem;
+    }
 
     @include mq(lg) {
         width: 40%;
         text-align: justify;
+        font-size: 1.5rem;
     }
 }
 
-a.cta {
+button.cta {
     padding: 0.75rem 1.5rem;
     background-color: $brandBlue;
     color: #fff;
     margin-top: 2rem;
-    width: min-content;
     margin-inline: auto;
     z-index: 2;
+    position: relative;
 
     @include mq(md) {
         margin-inline: 0;
+    }
+
+
+    &::after {
+        position: relative;
+        content: "";
+        display: block;
+        width: 0%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: black;
+        transition: width 0.2s ease-in-out;
+
+    }
+
+    &:hover {
+
+        &::after {
+            width: 100%;
+        }
     }
 }
 
@@ -116,10 +155,18 @@ a.cta {
     transform: scaleX(-1);
     max-width: 200%;
     filter: brightness(30%);
-
     animation: slideFromRight 0.5s ease-in-out forwards;
 
-    @include mq(lg) {
+    @include mq(425px) {
+        right: -20%;
+    }
+
+    @include mq(768px) {
+        right: 2rem;
+        height: 90vh;
+    }
+
+    @include mq(1178px) {
         object-fit: cover;
         height: 90vh;
         right: 4rem;
@@ -135,10 +182,17 @@ a.cta {
     object-fit: cover;
     width: 100px;
 
+    @include mq(md) {
+        width: 125px;
+    }
 
     @include mq(lg) {
+        width: 150px;
         left: 5rem;
     }
-}
 
+    @include mq(xl) {
+        width: 175px;
+    }
+}
 </style>

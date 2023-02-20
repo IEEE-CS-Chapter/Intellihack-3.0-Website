@@ -5,21 +5,21 @@
             <div class="prize-card">
                 <div class="prize-card__details">
                     <h3>Third Place</h3>
-                    <img src="@/assets/images/third_place.png" alt="Bronze Laurel">
+                    <img  v-lazy="{ src: '/prizes/third_place.webp' }" alt="Bronze Laurel">
                     <p>Rs. 50 000</p>
                 </div>
             </div>
             <div class="prize-card">
                 <div class="prize-card__details">
                     <h3>First Place</h3>
-                    <img src="@/assets/images/first_place.png" alt="Gold Laurel">
+                    <img v-lazy="{ src: '/prizes/first_place.webp' }" alt="Gold Laurel">
                     <p>Rs. 100 000</p>
                 </div>
             </div>
             <div class="prize-card">
                 <div class="prize-card__details">
                     <h3>Second Place</h3>
-                    <img src="@/assets/images/second_place.png" alt="Silver Laurel">
+                    <img v-lazy="{ src: '/prizes/second_place.webp' }" alt="Silver Laurel">
                     <p>Rs. 75 000</p>
                 </div>
             </div>
@@ -50,7 +50,7 @@
             padding: 2rem;
         }
 
-        @include mq(md) {
+        @include mq(718px) {
             gap: 3rem;
             grid-template-columns: repeat(3, 1fr);
             padding: 3rem;
@@ -82,6 +82,10 @@ h2 {
         font-size: 1.8rem;
     }
 
+    @include mq(lg) {
+        margin-bottom: 1rem;
+    }
+
 
 
     @include mq(lg) {
@@ -95,8 +99,8 @@ h2 {
 
 
 .prize-card {
-    aspect-ratio: 4 / 5;
-    background-color: #07182E;
+    aspect-ratio: 4 / 5.5;
+    background-color: rgba($color: $brandBlue, $alpha: 0.5);
     position: relative;
     display: flex;
     flex-direction: column;
@@ -138,13 +142,20 @@ h2 {
         grid-row: 3 / 4;
 
 
-        @include mq(md) {
+        @include mq(718px) {
+            grid-column: 1 / 2;
+            grid-row: 2 / 3;
+        }
+
+
+        
+        @include mq(768px) {
             grid-column: 3 / 4;
             grid-row: 2 / 3;
         }
 
 
-        @include mq(xl) {
+        @include mq(918px) {
             grid-column: 1 / 2;
             grid-row: 1 / 2;
         }
@@ -160,13 +171,18 @@ h2 {
 
 
 
-        @include mq(md) {
+        @include mq(718px) {
             grid-column: 2 / 3;
             grid-row: 1 / 2;
         }
 
 
-        @include mq(md) {
+        @include mq(768px) {
+            grid-column: 2 / 3;
+            grid-row: 1 / 2;
+        }
+
+        @include mq(918px) {
             grid-column: 2 / 3;
             grid-row: 1 / 2;
         }
@@ -180,13 +196,21 @@ h2 {
         grid-column: 1 / 2;
         grid-row: 2 / 3;
 
-        @include mq(md) {
+        @include mq(718px) {
+            grid-column: 3 / 4;
+            grid-row: 2 / 3;
+        }
+
+        
+        @include mq(768px) {
             grid-column: 1 / 2;
             grid-row: 2 / 3;
         }
 
 
-        @include mq(xl) {
+
+
+        @include mq(918px) {
             grid-column: 3 / 4;
             grid-row: 1 / 2;
         }
@@ -216,15 +240,48 @@ h2 {
 
         p {
             color: #fff;
-            font-size: 1.4rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+
+            @include mq(sm) {
+                font-size: 1.3rem;
+            }
+
+            @include mq(md) {
+                font-size: 1.4rem;
+            }
+
+            @include mq(lg) {
+                font-size: 1.5rem;
+            }
+
+            @include mq(xl) {
+                font-size: 1.8rem;
+            }
         }
     }
 
     h3 {
         z-index: 1;
         color: white;
-        font-size: 1.8rem;
+        font-size: 1.2rem;
         text-align: center;
+
+        @include mq(sm) {
+            font-size: 1.3rem;
+        }
+
+        @include mq(md) {
+            font-size: 1.4rem;
+        }
+
+        @include mq(lg) {
+            font-size: 1.4rem;
+        }
+
+        @include mq(xl) {
+            font-size: 1.5rem;
+        }
     }
 
 

@@ -7,6 +7,7 @@ import Icons from "unplugin-icons/vite";
 import IconsResolver from "unplugin-icons/resolver";
 import UnoCSS from "unocss/vite";
 import WebfontDownload from "vite-plugin-webfont-dl";
+import { VitePluginFonts } from 'vite-plugin-fonts'
 import { compression as Compression } from "vite-plugin-compression2";
 
 // https://vitejs.dev/config/
@@ -21,7 +22,18 @@ export default defineConfig({
     Components({}),
     Icons({}),
     UnoCSS({}),
-    WebfontDownload({}),
+    VitePluginFonts({
+      google: {
+        preconnect: true,
+        display: 'block',
+        families: [
+          {
+            name: 'Poppins',
+            styles: 'wght@0,400;1,700',
+          },
+        ],
+      }, 
+    }),
     Compression(),
     Compression({
       algorithm: "brotliCompress",

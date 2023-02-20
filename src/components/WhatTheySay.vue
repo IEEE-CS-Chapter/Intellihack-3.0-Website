@@ -208,7 +208,7 @@ function nextSaying() {
             <div class="showcase-pictures--slides">
                 <div class="slide-image" v-for="{ name, position, profession, quote, url } in sayings" :key="url"
                     ref="slideImages">
-                    <img :src="url" :alt="profession">
+                    <img v-lazy="{ src: url }" :alt="profession">
                     <div>
                         <h3>{{ name }}</h3>
                         <p>{{ quote }}</p>
@@ -371,9 +371,7 @@ h2 {
 
 .showcase-pictures--slides img {
     width: 100%;
-    aspect-ratio: 1.09375;
-    // position: absolute;
-    // box-shadow: 0 0 30px rgba(0, 0, 0, 0.25);
+    aspect-ratio: 1;
     border-radius: 0.2rem;
 }
 

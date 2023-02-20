@@ -195,7 +195,8 @@ h2 {
 
 .timeline-event {
     width: 87.5%;
-    background-color: rgba(var(--brand-black), 0.4);
+    // background-color: rgba(var(--brand-black), 0.4);
+    background-color: rgba($color: $brandBlue, $alpha: 0.2);
     // border: 2px solid $brandBlue;
     align-self: flex-start;
     transform: translateX(8rem);

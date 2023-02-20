@@ -9,6 +9,8 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    AppButton: typeof import('./src/components/AppButton.vue')['default']
+    AppCountdown: typeof import('./src/components/AppCountdown.vue')['default']
     BaseFileInput: typeof import('./src/components/BaseFileInput.vue')['default']
     BaseInput: typeof import('./src/components/BaseInput.vue')['default']
     BaseSelectInput: typeof import('./src/components/BaseSelectInput.vue')['default']
@@ -18,7 +20,6 @@ declare module '@vue/runtime-core' {
     Footer: typeof import('./src/components/Footer.vue')['default']
     Hero: typeof import('./src/components/Hero.vue')['default']
     HowItWorks: typeof import('./src/components/HowItWorks.vue')['default']
-    LoadingButton: typeof import('./src/components/LoadingButton.vue')['default']
     NavigationToggle: typeof import('./src/components/NavigationToggle.vue')['default']
     Prizes: typeof import('./src/components/Prizes.vue')['default']
     ScrollReminder: typeof import('./src/components/ScrollReminder.vue')['default']

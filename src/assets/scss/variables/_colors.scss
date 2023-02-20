@@ -1,11 +1,12 @@
 :root {
     --brand-black: 21, 21, 21;
     --color-brand-black: rgb(var(--brand-black));
-    --brand-blue: 0, 8, 250;
+    --brand-blue: 33, 79, 161;
     --color-brand-blue: rgb(var(--brand-blue));
+    --background-color: var(--color-brand-black);
 }
 
 $brandBlack: var(--color-brand-black);
-$brandBlue: #214FA1;
+$brandBlue: rgb(33, 79, 161);
 
 

@@ -39,4 +39,16 @@ body::-webkit-scrollbar-thumb {
   background-color: $brandBlue;
   border-radius: 100px;
 }
+
+body {
+scrollbar-color: $brandBlack $brandBlack;
+scrollbar-width: thin;
+}
+
+/* Firefox scrollbar thumb */
+body::-moz-scrollbar-thumb {
+background-color: $brandBlue;
+border-radius: 100px;
+}
+
 </style>

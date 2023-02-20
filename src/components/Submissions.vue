@@ -23,6 +23,9 @@
             Rules & Regulations
             <IconExternalLinkFill />
         </a>
+        <AppButton class="mt-8" :is-link="true" >
+            Submit your application
+        </AppButton>
     </section>
 </template>
 
@@ -66,114 +69,9 @@ a {
     align-items: center;
     justify-content: center;
     gap: 1rem;
+    color: $brandBlue;
+    margin: 1rem auto;
+    width: max-content;
 }
 
-.form__header {
-    color: #222;
-    display: flex;
-    justify-content: stretch;
-    align-items: center;
-    width: 95%;
-    max-width: 560px;
-    overflow-x: auto;
-    margin: 3rem auto 0 auto;
-
-    @include mq(lg) {
-        width: 50%;
-    }
-}
-
-
-.form__header-item {
-    padding: 1rem;
-    position: relative;
-    width: 60px;
-    transition: all 0.3s ease-in-out;
-    white-space: nowrap;
-    overflow-x: hidden;
-    text-overflow: ellipsis;
-    display: grid;
-    place-items: center;
-
-    &::after {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0%;
-        height: 4px;
-        background-color: $brandBlue;
-        border-radius: 100px;
-        transition: all 0.3s ease-in-out;
-    }
-
-    &--active {
-        width: 175px;
-
-        @include mq(lg) {
-            width: 250px;
-        }
-    }
-
-
-    @include mq(lg) {
-        width: 100px;
-    }
-
-    &--active::after {
-        width: 100%;
-    }
-}
-
-.form__block {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    width: 95%;
-    margin: 0 auto;
-    padding-block: 2rem;
-
-    @include mq(lg) {
-        width: 50%;
-    }
-
-    h3 {
-        font-size: 1.5rem;
-    }
-}
-
-.form__block-actions {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 1rem;
-}
-
-.form-enter-active {
-    transition: transform 0.3s linear, opacity 0.4s linear;
-}
-
-.form-leave-active {
-    transition: transform 0.3s linear, opacity 0.2s linear;
-}
-
-.form-enter-from {
-    transform: translateX(20%);
-    opacity: 0;
-}
-
-.form-leave-to {
-    transform: translateX(-20%);
-    opacity: 0;
-}
-
-.form-enter-to {
-    transform: translateX(0rem);
-    opacity: 1;
-}
-
-.form-leave-from {
-    transform: translateX(0rem);
-    opacity: 1;
-}
 </style>
