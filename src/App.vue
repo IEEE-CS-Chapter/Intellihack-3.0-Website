@@ -18,10 +18,6 @@
 
 <script setup lang="ts">
 const bgCanvas = ref<HTMLCanvasElement>()
-
-
-onMounted(() => {
-})
 </script>
 
 

@@ -1,12 +1,12 @@
 <template>
-    <ClientOnly>
-        <section id="why-intellihack">
+    <!-- <ClientOnly> -->
+        <section id="why-intellihack" ref="whyIntellihack">
             <Carousel :items-to-show="1" :wrap-around="true" :autoplay="2000" :transition="500">
                 <Slide v-for="image, index in images" :key="image">
                     <img :src="image" :alt="`Carousel Image #${index + 1}`">
                 </Slide>
             </Carousel>
-            <div class="info">
+            <div class="info" ref="infoDiv">
                 <h2>Why IntelliHack ?</h2>
                 <p>
                     IntelliHack is the first-ever Machine Learning hackathon in Sri Lanka. This is one of the year’s
@@ -26,12 +26,13 @@
                 </p>
             </div>
         </section>
-    </ClientOnly>
+    <!-- </ClientOnly> -->
 </template>
 
-<script lang="js">
+<script setup lang="ts">
 import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide } from 'vue3-carousel'
+import { gsap } from 'gsap'
 
 const images = [
     "/memories/intelli1.webp",
@@ -41,17 +42,35 @@ const images = [
     "/memories/intelli5.webp",
 ]
 
-export default {
-    setup() {
-        return {
-            images
-        }
-    },
-    components: {
-        Carousel,
-        Slide
-    }
-}
+const whyIntellihack = ref<HTMLDivElement>()
+const infoDiv = ref<HTMLDivElement>()
+
+onMounted(() => {
+
+    gsap.set([infoDiv.value], {
+        opacity: 0,
+    })
+
+    // using intersection observer to animate the info section when why-intellihack section is half visible for the first time
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                gsap.to([infoDiv.value], {
+                    opacity: 1,
+                    duration: 1,
+                    ease: "power4.out",
+                })
+                observer.unobserve(entry.target)
+            }
+        })
+    }, {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.5,
+    })
+
+    observer.observe(whyIntellihack.value as HTMLDivElement)
+})
 
 </script>
 
@@ -152,27 +171,27 @@ export default {
 
 
 .info p::-webkit-scrollbar-track {
-  background-color: transparent;
+    background-color: transparent;
 }
 
 .info p::-webkit-scrollbar {
-  width: 5px;
-  background-color: transparent;
+    width: 5px;
+    background-color: transparent;
 }
 
 .info p::-webkit-scrollbar-thumb {
-  background-color: #fefefe;
-  border-radius: 100px;
+    background-color: #fefefe;
+    border-radius: 100px;
 }
 
 .info p {
-scrollbar-color: transparent transparent;
-scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+    scrollbar-width: thin;
 }
 
 /* Firefox scrollbar thumb */
 .info p::-moz-scrollbar-thumb {
-background-color: #fefefe;
-border-radius: 100px;
+    background-color: #fefefe;
+    border-radius: 100px;
 }
 </style>

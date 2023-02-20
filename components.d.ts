@@ -11,10 +11,6 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AppButton: typeof import('./src/components/AppButton.vue')['default']
     AppCountdown: typeof import('./src/components/AppCountdown.vue')['default']
-    BaseFileInput: typeof import('./src/components/BaseFileInput.vue')['default']
-    BaseInput: typeof import('./src/components/BaseInput.vue')['default']
-    BaseSelectInput: typeof import('./src/components/BaseSelectInput.vue')['default']
-    BaseTextarea: typeof import('./src/components/BaseTextarea.vue')['default']
     ContactUs: typeof import('./src/components/ContactUs.vue')['default']
     Cursor: typeof import('./src/components/Cursor.vue')['default']
     Footer: typeof import('./src/components/Footer.vue')['default']

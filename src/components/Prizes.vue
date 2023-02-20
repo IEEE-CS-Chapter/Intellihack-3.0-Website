@@ -1,25 +1,25 @@
 <template>
-    <section id="prizes">
+    <section id="prizes" ref="prizes">
         <h2>Prizes</h2>
         <div>
-            <div class="prize-card">
+            <div class="prize-card" ref="prize1">
                 <div class="prize-card__details">
                     <h3>Third Place</h3>
-                    <img  v-lazy="{ src: '/prizes/third_place.webp' }" alt="Bronze Laurel">
+                    <img src='/prizes/third_place.webp' alt="Bronze Laurel">
                     <p>Rs. 50 000</p>
                 </div>
             </div>
-            <div class="prize-card">
+            <div class="prize-card" ref="prize2">
                 <div class="prize-card__details">
                     <h3>First Place</h3>
-                    <img v-lazy="{ src: '/prizes/first_place.webp' }" alt="Gold Laurel">
+                    <img src='/prizes/first_place.webp' alt="Gold Laurel">
                     <p>Rs. 100 000</p>
                 </div>
             </div>
-            <div class="prize-card">
+            <div class="prize-card" ref="prize3">
                 <div class="prize-card__details">
                     <h3>Second Place</h3>
-                    <img v-lazy="{ src: '/prizes/second_place.webp' }" alt="Silver Laurel">
+                    <img src='/prizes/second_place.webp' alt="Silver Laurel">
                     <p>Rs. 75 000</p>
                 </div>
             </div>
@@ -27,12 +27,46 @@
     </section>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { gsap } from 'gsap'
+
+const prize1 = ref<HTMLDivElement>()
+const prize2 = ref<HTMLDivElement>()
+const prize3 = ref<HTMLDivElement>()
+
+const prizes = ref<HTMLDivElement>()
+
+onMounted(() => {
+    // make the prize cards invisible at start and animate them from bottom to top and make them visible when scrolled to them
+    gsap.set([prize1.value, prize2.value, prize3.value], { autoAlpha: 0, y: 50 })
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                gsap.to([prize1.value, prize2.value, prize3.value], {
+                    autoAlpha: 1,
+                    y: 0,
+                    duration: 1,
+                    stagger: 0.2,
+                })
+                observer.unobserve(entry.target)
+            }
+        })
+    }, {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.5,
+    })
+
+    observer.observe(prizes.value as HTMLDivElement)
+})
+
+</script>
 
 <style lang="scss" scoped>
 #prizes {
     width: 100vw;
-    min-height: 100vh;
+    // min-height: 100vh;
 
 
     &>div {
@@ -43,12 +77,14 @@
         width: 100%;
         margin: 0 auto;
         gap: 1.5rem;
-        padding: 0rem 1rem; 
+        padding: 0rem 1rem;
+        margin-bottom: 2rem;
 
         @include mq(sm) {
             gap: 2rem;
             padding: 1.5rem;
             padding-top: 0rem;
+            margin-bottom: 2.2rem;
         }
 
         @include mq(718px) {
@@ -56,11 +92,13 @@
             grid-template-columns: repeat(3, 1fr);
             padding: 2rem;
             padding-top: 0rem;
+            margin-bottom: 2.5rem;
         }
 
         @include mq(lg) {
             width: 100%;
             gap: 4rem;
+            margin-bottom: 3rem;
         }
 
         @include mq(xl) {
@@ -154,7 +192,7 @@ h2 {
         }
 
 
-        
+
         @include mq(768px) {
             grid-column: 3 / 4;
             grid-row: 2 / 3;
@@ -207,7 +245,7 @@ h2 {
             grid-row: 2 / 3;
         }
 
-        
+
         @include mq(768px) {
             grid-column: 1 / 2;
             grid-row: 2 / 3;

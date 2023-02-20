@@ -1,5 +1,6 @@
 <template>
-    <div class="nav-toggle" :class="isActive ? 'is-active' : ''" id="nav-toggle" @click="isActive = !isActive" ref="navToggle">
+    <div class="nav-toggle" :class="isActive ? 'is-active' : ''" id="nav-toggle" @click="isActive = !isActive"
+        ref="navToggle">
         <span class="line"></span>
         <span class="line"></span>
         <span class="line"></span>
@@ -20,9 +21,19 @@
 </template>
 
 <script setup lang="ts">
-import {gsap} from 'gsap'
+import { gsap } from 'gsap'
 
 const isActive = ref(false)
+
+watch(isActive, () => {
+    // prevent scroll when menu is active
+    if (isActive.value) {
+        document.body.style.overflowY = 'hidden'
+    } else {
+        document.body.style.overflowY = 'auto'
+    }
+})
+
 const navToggle = ref<HTMLDivElement>()
 
 const linkMapList = [{
@@ -50,6 +61,8 @@ const linkMapList = [{
 
 const linkRefs = ref<HTMLAnchorElement[]>([])
 
+
+
 onMounted(() => {
     gsap.set([navToggle.value], { autoAlpha: 0, x: 50 })
     gsap.to([navToggle.value], { autoAlpha: 1, x: 0, duration: 1, delay: 0.5 })
@@ -65,6 +78,7 @@ onMounted(() => {
     top: 1rem;
     right: 1rem;
     z-index: 100;
+    cursor: pointer;
 
 
     @include mq(lg) {
@@ -135,7 +149,10 @@ onMounted(() => {
 // === Variables =====
 $perspective: 60rem;
 $font-size: 3.5rem;
-$mobile-font-size: 2.75rem;
+$xs-font-size: 2rem;
+$sml-font-size: 2.25rem;
+$md-font-size: 2.5rem;
+$lg-font-size: 3rem;
 $split-position: 49%;
 $split-thickness: 4px;
 // $split-color: #2c5aff;
@@ -145,7 +162,7 @@ $split-color: $brandBlue;
 
 
 .Menu-list {
-    font-size: $mobile-font-size;
+    font-size: $xs-font-size;
     font-weight: bold;
     line-height: 1.2;
     text-transform: uppercase;
@@ -154,8 +171,21 @@ $split-color: $brandBlue;
     flex-direction: column;
     align-items: center;
     transform: rotateX(-10deg) rotateY(20deg);
+    gap: 1.5rem;
+
+    @include mq(sml) {
+        font-size: $sml-font-size;
+    }
+
+    @include mq(md) {
+        font-size: $md-font-size;
+    }
 
     @include mq(lg) {
+        font-size: $lg-font-size;
+    }
+
+    @include mq(xl) {
         font-size: $font-size;
     }
 }
