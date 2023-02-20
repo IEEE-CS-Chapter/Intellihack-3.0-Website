@@ -33,41 +33,32 @@ let submissionReminder: HTMLParagraphElement;
 let countdown: HTMLDivElement;
 let scrollReminder: HTMLDivElement;
 let cta: HTMLAnchorElement | HTMLButtonElement;
-let logo: HTMLImageElement;
 let robo: HTMLImageElement;
 
 onMounted(() => {
-    document.body.style.overflowY = 'hidden'
     heading = document.getElementById('heading') as HTMLHeadingElement
     submissionReminder = document.getElementById('submission-reminder') as HTMLParagraphElement
     countdown = document.getElementById('countdown') as HTMLDivElement
     scrollReminder = document.getElementById('scroll-reminder') as HTMLDivElement
     cta = document.getElementById('cta') as HTMLAnchorElement | HTMLButtonElement
-    logo = document.getElementById('logo') as HTMLImageElement
     robo = document.getElementById('robo') as HTMLImageElement
 
 
     // make heading, countdown, cta invisible at start and animate them from bottom to top and make them visible
-    gsap.set([heading, submissionReminder, countdown, cta, scrollReminder], { autoAlpha: 0, y: 50 })
-    // gsap.set([logo], { autoAlpha: 0 })
+    gsap.set([heading, submissionReminder, countdown, cta], { autoAlpha: 0, y: 50 })
     gsap.set([robo], { autoAlpha: 0, x: 100 })
+    gsap.set(scrollReminder, { autoAlpha: 0,})
 
-    gsap.to([heading, submissionReminder, countdown, cta, scrollReminder], { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.25 })
+    gsap.to([heading, submissionReminder, countdown, cta], { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.25 })
 
-    // // wait until all images are loaded and then animate the logo
-    // imagesLoaded(logo as HTMLImageElement, () => {
-    //     gsap.to(logo, { autoAlpha: 1, duration: 0.5 })
-    // })
-
-    // wait until all images are loaded and then animate the robo
     imagesLoaded(robo as HTMLImageElement, () => {
         gsap.to(robo, { autoAlpha: 1, x: 0, duration: 1 })
     })
 
-    // after all animations are done, make the body scrollable
-    gsap.delayedCall(1.5, () => {
-        document.body.style.overflowY = 'scroll'
+    imagesLoaded(scrollReminder as HTMLImageElement, () => {
+        gsap.to(scrollReminder, { autoAlpha: 1, duration: 0.5 })
     })
+
 
 })
 
@@ -175,7 +166,7 @@ button.cta {
     height: 100vh;
     width: 100vw;
     position: relative;
-    overflow-x: hidden;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -242,6 +233,11 @@ button.cta {
     @include mq(xl) {
         width: 175px;
     }
+}
+
+.cta {
+    opacity: 0;
+    visibility: hidden;
 }
 
 </style>

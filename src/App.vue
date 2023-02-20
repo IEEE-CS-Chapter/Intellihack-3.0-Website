@@ -1,5 +1,5 @@
 <template>
-  <Teleport to="body">
+  <Teleport to="#app">
     <!-- <Cursor /> -->
     <NavigationToggle />
   </Teleport>
@@ -18,33 +18,39 @@
 
 <script setup lang="ts">
 const bgCanvas = ref<HTMLCanvasElement>()
+
 </script>
 
 
 <style lang="scss">
-body::-webkit-scrollbar-track {
+
+#app {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100vh;
+}
+#app::-webkit-scrollbar-track {
   background-color: $brandBlack;
 }
 
-body::-webkit-scrollbar {
+#app::-webkit-scrollbar {
   width: 5px;
   background-color: $brandBlack;
 }
 
-body::-webkit-scrollbar-thumb {
+#app::-webkit-scrollbar-thumb {
   background-color: $brandBlue;
   border-radius: 100px;
 }
 
-body {
-scrollbar-color: $brandBlack $brandBlack;
-scrollbar-width: thin;
+#app {
+  scrollbar-color: $brandBlack $brandBlack;
+  scrollbar-width: thin;
 }
 
 /* Firefox scrollbar thumb */
-body::-moz-scrollbar-thumb {
-background-color: $brandBlue;
-border-radius: 100px;
+#app::-moz-scrollbar-thumb {
+  background-color: $brandBlue;
+  border-radius: 100px;
 }
-
 </style>
