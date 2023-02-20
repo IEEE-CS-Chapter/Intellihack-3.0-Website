@@ -1,22 +1,22 @@
 <template>
     <section id="prizes" ref="prizes">
         <h2>Prizes</h2>
-        <div>
-            <div class="prize-card" ref="prize1">
+        <div ref="prizeContainer">
+            <div class="prize-card" ref="prizeCard1">
                 <div class="prize-card__details">
                     <h3>Third Place</h3>
                     <img src='/prizes/third_place.webp' alt="Bronze Laurel">
                     <p>Rs. 50 000</p>
                 </div>
             </div>
-            <div class="prize-card" ref="prize2">
+            <div class="prize-card" ref="prizeCard2">
                 <div class="prize-card__details">
                     <h3>First Place</h3>
                     <img src='/prizes/first_place.webp' alt="Gold Laurel">
                     <p>Rs. 100 000</p>
                 </div>
             </div>
-            <div class="prize-card" ref="prize3">
+            <div class="prize-card" ref="prizeCard3">
                 <div class="prize-card__details">
                     <h3>Second Place</h3>
                     <img src='/prizes/second_place.webp' alt="Silver Laurel">
@@ -30,24 +30,25 @@
 <script setup lang="ts">
 import { gsap } from 'gsap'
 
-const prize1 = ref<HTMLDivElement>()
-const prize2 = ref<HTMLDivElement>()
-const prize3 = ref<HTMLDivElement>()
 
 const prizes = ref<HTMLDivElement>()
+const prizeCard3 = ref<HTMLDivElement>()
+const prizeCard2 = ref<HTMLDivElement>()
+const prizeCard1 = ref<HTMLDivElement>()
+const prizeContainer = ref<HTMLDivElement>()
 
 onMounted(() => {
     // make the prize cards invisible at start and animate them from bottom to top and make them visible when scrolled to them
-    gsap.set([prize1.value, prize2.value, prize3.value], { autoAlpha: 0, y: 50 })
+    gsap.set([prizeCard1.value, prizeCard2.value, prizeCard3.value], { autoAlpha: 0, y: 50 })
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
-                gsap.to([prize1.value, prize2.value, prize3.value], {
+                gsap.to([prizeCard1.value, prizeCard2.value, prizeCard3.value], {
                     autoAlpha: 1,
                     y: 0,
                     duration: 1,
-                    stagger: 0.2,
+                    stagger: 0.5,
                 })
                 observer.unobserve(entry.target)
             }
@@ -55,7 +56,6 @@ onMounted(() => {
     }, {
         root: null,
         rootMargin: "0px",
-        threshold: 0.5,
     })
 
     observer.observe(prizes.value as HTMLDivElement)
@@ -327,7 +327,15 @@ h2 {
             font-size: 1.5rem;
         }
     }
+}
 
+@keyframes rotatePrizeCardBackground {
+    from {
+        transform: rotate(0deg);
+    }
 
+    to {
+        transform: rotate(360deg);
+    }
 }
 </style>

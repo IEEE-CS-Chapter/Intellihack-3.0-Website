@@ -66,7 +66,6 @@ onMounted(() => {
     }, {
         root: null,
         rootMargin: "0px",
-        threshold: 0.5,
     })
 
     observer.observe(whyIntellihack.value as HTMLDivElement)

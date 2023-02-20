@@ -1,25 +1,25 @@
 <template>
     <section id="sponsors">
         <h2>Sponsors</h2>
-        <div id="platinum">
+        <div id="platinum" ref="platinum">
             <div class="sponsor-card">
                 <h3>Offcial Platinum Sponsor</h3>
                 <img src="@/assets/images/sponsors/dialogLogo.webp" alt="Dialog Logo">
             </div>
         </div>
-        <div id="gold">
+        <div id="gold" ref="gold">
             <div class="sponsor-card">
                 <h3>Official Gold Sponsor</h3>
                 <img src="@/assets/images/sponsors/lsegLogo.webp" alt="LSEG Logo">
             </div>
         </div>
-        <div id="silver">
+        <div id="silver" ref="silver">
             <div class="sponsor-card">
                 <h3>Official Silver Sponsor</h3>
                 <img src="@/assets/images/sponsors/ifsLogo.webp" alt="IFS Logo">
             </div>
         </div>
-        <div id="knowledge">
+        <div id="knowledge" ref="knowledge">
             <div class="sponsor-card">
                 <h3>Official Knowledge Partner</h3>
                 <img src="@/assets/images/sponsors/GDG_Logo.webp" alt="GDG Logo">
@@ -28,7 +28,12 @@
     </section>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const platinum = ref<HTMLDivElement>()
+const gold = ref<HTMLDivElement>()
+const silver = ref<HTMLDivElement>()
+const knowledge = ref<HTMLDivElement>()
+</script>
 
 <style lang="scss" scoped>
 #sponsors {
