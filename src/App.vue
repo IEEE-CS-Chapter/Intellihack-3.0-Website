@@ -35,7 +35,7 @@ const bgCanvas = ref<HTMLCanvasElement>()
 
 #app::-webkit-scrollbar {
   width: 5px;
-  background-color: $brandBlack;
+  background-color: transparent;
 }
 
 #app::-webkit-scrollbar-thumb {
@@ -44,13 +44,8 @@ const bgCanvas = ref<HTMLCanvasElement>()
 }
 
 #app {
-  scrollbar-color: $brandBlack $brandBlack;
+  scrollbar-color: $brandBlue transparent;
   scrollbar-width: thin;
-}
-
-/* Firefox scrollbar thumb */
-#app::-moz-scrollbar-thumb {
-  background-color: $brandBlue;
-  border-radius: 100px;
+  scrollbar-gutter: auto;
 }
 </style>
