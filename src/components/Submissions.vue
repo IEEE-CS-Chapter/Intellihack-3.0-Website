@@ -23,7 +23,7 @@
             Rules & Regulations
             <IconExternalLinkFill />
         </a>
-        <AppButton class="mt-8" :is-link="true" >
+        <AppButton class="submission-link" :is-link="true" >
             Submit your application
         </AppButton>
     </section>
@@ -37,7 +37,7 @@ import IconExternalLinkFill from "~icons/ri/external-link-fill"
 #submissions {
     width: 100vw;
     background-color: #fff;
-    padding-bottom: 1rem;
+    // padding-bottom: 1rem;
 }
 
 h2 {
@@ -46,16 +46,21 @@ h2 {
     font-size: 1.6rem;
     font-weight: 700;
     font-family: "Poppins", sans-serif;
-    margin-block: 3rem;
+    margin-block: 2rem;
 
     @include mq(sm) {
         font-size: 1.8rem;
+        margin-block: 2.2rem;
     }
 
+    @include mq(md) {
+        margin-block: 2.5rem;
+    }
 
 
     @include mq(lg) {
         font-size: 2.5rem;
+        margin-block: 3rem;
     }
 
     @include mq(xl) {
@@ -72,6 +77,18 @@ a {
     color: $brandBlue;
     margin: 1rem auto;
     width: max-content;
+}
+
+a.submission-link {
+    margin: 1.5rem auto;
+
+    @include mq(lg) {
+        margin: 2rem auto;
+    }
+
+    @include mq(xl) {
+        margin: 3rem auto;
+    }
 }
 
 </style>

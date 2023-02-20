@@ -138,16 +138,21 @@ h2 {
     font-weight: 700;
     font-family: "Poppins", sans-serif;
     height: 12.5%;
-    margin-block: 3rem;
+    margin-block: 2rem;
 
     @include mq(sm) {
         font-size: 1.8rem;
+        margin-block: 2.2rem;        
     }
 
 
+    @include mq(md) {
+        margin-block: 2.5rem;
+    }
 
     @include mq(lg) {
         font-size: 2.5rem;
+        margin-block: 3rem;
     }
 
     @include mq(xl) {

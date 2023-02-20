@@ -43,17 +43,19 @@
         width: 100%;
         margin: 0 auto;
         gap: 1.5rem;
-        padding: 1rem;
+        padding: 0rem 1rem; 
 
         @include mq(sm) {
             gap: 2rem;
-            padding: 2rem;
+            padding: 1.5rem;
+            padding-top: 0rem;
         }
 
         @include mq(718px) {
             gap: 3rem;
             grid-template-columns: repeat(3, 1fr);
-            padding: 3rem;
+            padding: 2rem;
+            padding-top: 0rem;
         }
 
         @include mq(lg) {
@@ -64,6 +66,7 @@
         @include mq(xl) {
             width: 80%;
             gap: 5rem;
+            padding-top: 1rem;
         }
     }
 }
@@ -76,17 +79,20 @@ h2 {
     font-weight: 700;
     font-family: "Poppins", sans-serif;
     height: 12.5%;
-    margin-block: 3rem;
+    margin-block: 2rem;
 
     @include mq(sm) {
         font-size: 1.8rem;
+        margin-block: 2.2rem;
+    }
+
+    @include mq(md) {
+        margin-block: 2.5rem;
     }
 
     @include mq(lg) {
-        margin-bottom: 1rem;
+        margin-block: 3rem;
     }
-
-
 
     @include mq(lg) {
         font-size: 2.5rem;
