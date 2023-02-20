@@ -16,7 +16,7 @@ const { y } = useElementBounding(whatTheySay)
 const loadedOnce = ref(false)
 
 watch(y, () => {
-    if (y.value < 100 && !loadedOnce.value) {
+    if (y.value < 200 && !loadedOnce.value) {
         if (slideImages.value) {
             const timeline = gsap.timeline();
             timeline
@@ -327,11 +327,16 @@ h2 {
     aspect-ratio: 2 / 3;
     position: relative;
     perspective: 800px;
-    // margin-top: 1rem;
+    margin-top: -1rem;
+
+
+    @include mq(sm) {
+        margin-top: 2.5rem;
+    }
 
 
     @include mq(xl) {
-        margin-top: 4rem;
+        margin-top: 3rem;
     }
 }
 
@@ -345,6 +350,7 @@ h2 {
     align-items: center;
     background-color: #fff;
     color: #151515;
+    cursor: pointer;
 
 
     &>div {
