@@ -1,9 +1,9 @@
 <template>
     <main class="hero">
-        <h1 class="mb-16" ref="heading">
+        <h1 class="mb-16" id="heading">
             IntelliHack 3.0
         </h1>
-        <p ref="reminder">
+        <p id="submission-reminder">
             Proposal submissions deadline in
         </p>
         <AppCountdown flip-card-id="Intellihach3" :labels="{
@@ -11,12 +11,12 @@
             hours: 'Hours',
             minutes: 'Minutes',
             seconds: 'Seconds'
-        }" :deadline-date="new Date('2023-03-11 00:00:00')" label-color="#bbb" class="z-2" ref="countdown" />
+        }" :deadline-date="new Date('2023-03-11 00:00:00')" label-color="#bbb" class="z-2" id="countdown" />
 
-        <AppButton class="mt-8 z-2 cta" href="#submissions" :is-link="true" ref="cta"> Register </AppButton>
-        <img src="@/assets/images/logo.webp" alt="Intellihack Logo" class="hero-logo" ref="logo">
-        <img src="@/assets/images/robot.webp" alt="Robo Human Hybrid Woman" class="hero-img" ref="robo">
-        <ScrollReminder ref="scrollReminder" />
+        <AppButton class="mt-8 z-2 cta" href="#submissions" :is-link="true" id="cta"> Register </AppButton>
+        <img src="@/assets/images/logo.webp" alt="Intellihack Logo" class="hero-logo" id="logo">
+        <img src="@/assets/images/robot.webp" alt="Robo Human Hybrid Woman" class="hero-img" id="robo">
+        <ScrollReminder id="scroll-reminder" />
 
     </main>
 </template>
@@ -28,33 +28,41 @@ import AppCountdown from "@/components/AppCountdown.vue";
 import AppButton from "@/components/AppButton.vue";
 import ScrollReminder from "@/components/ScrollReminder.vue";
 
-const heading = ref<HTMLHeadingElement>()
-const reminder = ref<HTMLParagraphElement>()
-const countdown = ref<InstanceType<typeof AppCountdown> | null>()
-const scrollReminder = ref<InstanceType<typeof ScrollReminder> | null>()
-const cta = ref<InstanceType<typeof AppButton> | null>()
-const logo = ref<HTMLImageElement>()
-const robo = ref<HTMLImageElement>()
+let heading: HTMLHeadingElement;
+let submissionReminder: HTMLParagraphElement;
+let countdown: HTMLDivElement;
+let scrollReminder: HTMLDivElement;
+let cta: HTMLAnchorElement | HTMLButtonElement;
+let logo: HTMLImageElement;
+let robo: HTMLImageElement;
 
 onMounted(() => {
 
+    heading = document.getElementById('heading') as HTMLHeadingElement
+    submissionReminder = document.getElementById('submission-reminder') as HTMLParagraphElement
+    countdown = document.getElementById('countdown') as HTMLDivElement
+    scrollReminder = document.getElementById('scroll-reminder') as HTMLDivElement
+    cta = document.getElementById('cta') as HTMLAnchorElement | HTMLButtonElement
+    logo = document.getElementById('logo') as HTMLImageElement
+    robo = document.getElementById('robo') as HTMLImageElement
+
 
     // make heading, countdown, cta invisible at start and animate them from bottom to top and make them visible
-    gsap.set([heading.value, countdown.value?.$el, cta.value?.$el, scrollReminder.value?.$el], { autoAlpha: 0, y: 50 })
-    gsap.to([heading.value, countdown.value?.$el, cta.value?.$el, scrollReminder.value?.$el], { autoAlpha: 1, y: 0, duration: 1, stagger: 0.5 })
+    gsap.set([heading, submissionReminder, countdown, cta, scrollReminder], { autoAlpha: 0, y: 50 })
+    gsap.set([logo], { autoAlpha: 0, x: -50 })
+    gsap.set([robo], { autoAlpha: 0, x: 100 })
+
+    gsap.to([heading, submissionReminder, countdown, cta, scrollReminder], { autoAlpha: 1, y: 0, duration: 0.5, stagger: 0.25 })
 
     // wait until all images are loaded and then animate the logo
-    imagesLoaded(logo.value as HTMLImageElement, () => {
-        gsap.set([logo.value], { autoAlpha: 0, x: -50 })
-        gsap.to([logo.value], { autoAlpha: 1, x: 0, duration: 1})
+    imagesLoaded(logo as HTMLImageElement, () => {
+        gsap.to([logo], { autoAlpha: 1, x: 0, duration: 1 })
     })
 
     // wait until all images are loaded and then animate the robo
-    imagesLoaded(robo.value as HTMLImageElement, () => {
-        gsap.set([robo.value], { autoAlpha: 0, x: 100 })
-        gsap.to([robo.value], { autoAlpha: 1, x: 0, duration: 1})
+    imagesLoaded(robo as HTMLImageElement, () => {
+        gsap.to([robo], { autoAlpha: 1, x: 0, duration: 1 })
     })
-
 
 })
 
@@ -191,7 +199,6 @@ button.cta {
     transform: scaleX(-1);
     max-width: 200%;
     filter: brightness(30%);
-    opacity: 0;
 
     @include mq(425px) {
         right: -20%;
@@ -217,7 +224,6 @@ button.cta {
     left: 2rem;
     object-fit: cover;
     width: 100px;
-    opacity: 0;
 
     @include mq(md) {
         width: 125px;
@@ -233,8 +239,4 @@ button.cta {
     }
 }
 
-.cta {
-    transform: translateY(50px);
-    opacity: 0;
-}
 </style>
