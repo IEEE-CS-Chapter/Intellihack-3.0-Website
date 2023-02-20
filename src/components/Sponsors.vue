@@ -62,7 +62,6 @@ onMounted(() => {
     }, {
         root: null,
         rootMargin: '0px',
-        threshold: 0.5
     })
 
     observer.observe(sponsors as HTMLDivElement)
