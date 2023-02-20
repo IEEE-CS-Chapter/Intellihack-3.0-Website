@@ -31,10 +31,10 @@
 import { gsap } from 'gsap'
 
 
-let prizes : HTMLDivElement
+let prizes: HTMLDivElement
 let prizeCard3: HTMLDivElement
-let prizeCard2 :HTMLDivElement
-let prizeCard1 : HTMLDivElement
+let prizeCard2: HTMLDivElement
+let prizeCard1: HTMLDivElement
 
 onMounted(() => {
 
@@ -42,7 +42,7 @@ onMounted(() => {
     prizeCard3 = document.getElementById('price-card-3') as HTMLDivElement
     prizeCard2 = document.getElementById('price-card-2') as HTMLDivElement
     prizeCard1 = document.getElementById('price-card-1') as HTMLDivElement
-    
+
     gsap.set([prizeCard1, prizeCard2, prizeCard3], { autoAlpha: 0, y: 100 })
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
@@ -154,7 +154,7 @@ h2 {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    place-content: center;
+    justify-content: center;
     place-items: center;
     overflow: hidden;
     border-radius: 20px;
@@ -272,8 +272,18 @@ h2 {
         display: flex;
         flex-direction: column;
         align-items: center;
-        // justify-content: center;
-        gap: 1.5rem;
+        justify-content: center;
+        gap: 2rem;
+
+
+        @include mq(sm) {
+            gap: 3rem;
+        }
+
+
+        @include mq(718px) {
+            gap: 2rem;
+        }
 
 
         img {
@@ -282,23 +292,23 @@ h2 {
 
         p {
             color: #fff;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             font-weight: bold;
 
             @include mq(sm) {
-                font-size: 1.3rem;
-            }
-
-            @include mq(md) {
-                font-size: 1.4rem;
-            }
-
-            @include mq(lg) {
                 font-size: 1.5rem;
             }
 
-            @include mq(xl) {
+            @include mq(md) {
+                font-size: 1.6rem;
+            }
+
+            @include mq(lg) {
                 font-size: 1.8rem;
+            }
+
+            @include mq(xl) {
+                font-size: 2rem;
             }
         }
     }

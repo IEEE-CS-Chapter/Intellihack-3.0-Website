@@ -121,12 +121,17 @@ const linkRefs = ref<HTMLAnchorElement[]>([])
     transform: translateX(-50%);
     width: 100vw;
     height: 0vh;
-    z-index: 100;
+    z-index: 99;
     transition: all 0.3s ease-in-out;
     overflow: hidden;
 
     &.active {
-        height: 90vh;
+        height: 100vh;
+
+        // @include mq(lg) {
+        //     height: 100vh;
+        // }
+
     }
 }
 

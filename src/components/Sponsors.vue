@@ -63,7 +63,6 @@ onMounted(() => {
         root: null,
         rootMargin: '0px',
     })
-
     observer.observe(sponsors as HTMLDivElement)
 })
 
