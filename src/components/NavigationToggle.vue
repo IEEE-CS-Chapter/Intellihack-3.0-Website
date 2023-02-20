@@ -1,5 +1,5 @@
 <template>
-    <div class="nav-toggle" :class="isActive ? 'is-active' : ''" id="nav-toggle" @click="isActive = !isActive">
+    <div class="nav-toggle" :class="isActive ? 'is-active' : ''" id="nav-toggle" @click="isActive = !isActive" ref="navToggle">
         <span class="line"></span>
         <span class="line"></span>
         <span class="line"></span>
@@ -20,7 +20,10 @@
 </template>
 
 <script setup lang="ts">
+import {gsap} from 'gsap'
+
 const isActive = ref(false)
+const navToggle = ref<HTMLDivElement>()
 
 const linkMapList = [{
     link: "",
@@ -32,8 +35,8 @@ const linkMapList = [{
     link: "#submissions",
     text: "Submissions"
 }, {
-    link: "#prices",
-    text: "Prices"
+    link: "#prizes",
+    text: "Prizes"
 }, {
     link: "#sponsors",
     text: "Sponsors"
@@ -48,20 +51,8 @@ const linkMapList = [{
 const linkRefs = ref<HTMLAnchorElement[]>([])
 
 onMounted(() => {
-    const cursor = document.querySelector<HTMLDivElement>("#cursor")
-    const cursorInner = document.querySelector<HTMLDivElement>("#cursor__inner")
-    linkRefs.value.forEach((linkRef, index) => {
-        linkRef.addEventListener('mouseenter', () => {
-            cursor ? cursor.style.width = "2.5rem" : void 0
-            cursor ? cursor.style.height = "2.5rem" : void 0
-        })
-
-        linkRef.addEventListener('mouseleave', () => {
-            cursor ? cursor.style.width = "1.5rem" : void 0
-            cursor ? cursor.style.height = "1.5rem" : void 0
-        })
-
-    })
+    gsap.set([navToggle.value], { autoAlpha: 0, x: 50 })
+    gsap.to([navToggle.value], { autoAlpha: 1, x: 0, duration: 1, delay: 0.5 })
 })
 
 </script>

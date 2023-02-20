@@ -1,27 +1,63 @@
 <template>
     <main class="hero">
-        <h1 class="mb-16">
+        <h1 class="mb-16" ref="heading">
             IntelliHack 3.0
         </h1>
-        <p>
-            Proposal Submissions Closes in...
+        <p ref="reminder">
+            Proposal submissions deadline in
         </p>
         <AppCountdown flip-card-id="Intellihach3" :labels="{
             days: 'Days',
             hours: 'Hours',
             minutes: 'Minutes',
             seconds: 'Seconds'
-        }" :deadline-date="new Date('2023-03-11 00:00:00')" label-color="#bbb" class="z-2"/>
+        }" :deadline-date="new Date('2023-03-11 00:00:00')" label-color="#bbb" class="z-2" ref="countdown" />
 
-        <AppButton class="mt-8 z-2" href="#submissions" :is-link="true"> Register </AppButton>
-        <img src="@/assets/images/logo.webp" alt="Intellihack Logo" class="hero-logo">
-        <img src="@/assets/images/robot.webp" alt="Robo Human Hybrid Woman" class="hero-img">
-        <ScrollReminder />
+        <AppButton class="mt-8 z-2 cta" href="#submissions" :is-link="true" ref="cta"> Register </AppButton>
+        <img src="@/assets/images/logo.webp" alt="Intellihack Logo" class="hero-logo" ref="logo">
+        <img src="@/assets/images/robot.webp" alt="Robo Human Hybrid Woman" class="hero-img" ref="robo">
+        <ScrollReminder ref="scrollReminder" />
 
     </main>
 </template>
 
 <script setup lang="ts">
+import { gsap } from 'gsap'
+import imagesLoaded from 'imagesloaded'
+import AppCountdown from "@/components/AppCountdown.vue";
+import AppButton from "@/components/AppButton.vue";
+import ScrollReminder from "@/components/ScrollReminder.vue";
+
+const heading = ref<HTMLHeadingElement>()
+const reminder = ref<HTMLParagraphElement>()
+const countdown = ref<InstanceType<typeof AppCountdown> | null>()
+const scrollReminder = ref<InstanceType<typeof ScrollReminder> | null>()
+const cta = ref<InstanceType<typeof AppButton> | null>()
+const logo = ref<HTMLImageElement>()
+const robo = ref<HTMLImageElement>()
+
+onMounted(() => {
+
+
+    // make heading, countdown, cta invisible at start and animate them from bottom to top and make them visible
+    gsap.set([heading.value, countdown.value?.$el, cta.value?.$el, scrollReminder.value?.$el], { autoAlpha: 0, y: 50 })
+    gsap.to([heading.value, countdown.value?.$el, cta.value?.$el, scrollReminder.value?.$el], { autoAlpha: 1, y: 0, duration: 1, stagger: 0.5 })
+
+    // wait until all images are loaded and then animate the logo
+    imagesLoaded(logo.value as HTMLImageElement, () => {
+        gsap.set([logo.value], { autoAlpha: 0, x: -50 })
+        gsap.to([logo.value], { autoAlpha: 1, x: 0, duration: 1})
+    })
+
+    // wait until all images are loaded and then animate the robo
+    imagesLoaded(robo.value as HTMLImageElement, () => {
+        gsap.set([robo.value], { autoAlpha: 0, x: 100 })
+        gsap.to([robo.value], { autoAlpha: 1, x: 0, duration: 1})
+    })
+
+
+})
+
 
 </script>
 
@@ -155,7 +191,7 @@ button.cta {
     transform: scaleX(-1);
     max-width: 200%;
     filter: brightness(30%);
-    animation: slideFromRight 0.5s ease-in-out forwards;
+    opacity: 0;
 
     @include mq(425px) {
         right: -20%;
@@ -181,6 +217,7 @@ button.cta {
     left: 2rem;
     object-fit: cover;
     width: 100px;
+    opacity: 0;
 
     @include mq(md) {
         width: 125px;
@@ -194,5 +231,10 @@ button.cta {
     @include mq(xl) {
         width: 175px;
     }
+}
+
+.cta {
+    transform: translateY(50px);
+    opacity: 0;
 }
 </style>
