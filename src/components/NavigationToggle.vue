@@ -37,7 +37,7 @@ const linkMapList = [{
     link: "",
     text: "Intellihack",
 }, {
-    link: "#timeline",
+    link: "#how-it-works",
     text: "Timeline",
 }, {
     link: "#submissions",
