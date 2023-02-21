@@ -23,7 +23,7 @@
             Rules & Regulations
             <IconExternalLinkFill />
         </a>
-        <AppButton class="submission-link" :is-link="true" >
+        <AppButton class="submission-link" :is-link="true" href="https://bit.ly/intellihack3-proposal-submission" target="_blank" >
             Submit your application
         </AppButton>
     </section>
