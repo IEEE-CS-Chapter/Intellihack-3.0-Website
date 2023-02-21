@@ -5,21 +5,21 @@
             <div class="prize-card" id="price-card-1">
                 <div class="prize-card__details">
                     <h3>Third Place</h3>
-                    <img src='/prizes/third_place.webp' alt="Bronze Laurel">
+                    <img src='@/assets/images/Bronze Trophy.png' alt="Bronze Laurel">
                     <p>Rs. 50 000</p>
                 </div>
             </div>
             <div class="prize-card" id="price-card-2">
                 <div class="prize-card__details">
                     <h3>First Place</h3>
-                    <img src='/prizes/first_place.webp' alt="Gold Laurel">
+                    <img src='@/assets/images/Gold Trophy.png' alt="Gold Laurel">
                     <p>Rs. 100 000</p>
                 </div>
             </div>
             <div class="prize-card" id="price-card-3">
                 <div class="prize-card__details">
                     <h3>Second Place</h3>
-                    <img src='/prizes/second_place.webp' alt="Silver Laurel">
+                    <img src='@/assets/images/Silver Trophy.png' alt="Silver Laurel">
                     <p>Rs. 75 000</p>
                 </div>
             </div>
@@ -288,7 +288,7 @@ h2 {
 
 
         img {
-            width: 75%;
+            width: 55%;
         }
 
         p {
