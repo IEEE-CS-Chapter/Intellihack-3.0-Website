@@ -12,23 +12,22 @@
   <WhatTheySay />
   <ContactUs />
   <Footer />
-  <canvas id="bg-canvas" ref="bgCanvas"></canvas>
+  <BgCanvas />
 </template>
 
 
 <script setup lang="ts">
-const bgCanvas = ref<HTMLCanvasElement>()
 
 </script>
 
 
 <style lang="scss">
-
 #app {
   overflow-y: auto;
   overflow-x: hidden;
   height: 100vh;
 }
+
 #app::-webkit-scrollbar-track {
   background-color: $brandBlack;
 }

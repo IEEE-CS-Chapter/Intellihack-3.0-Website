@@ -11,6 +11,7 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AppButton: typeof import('./src/components/AppButton.vue')['default']
     AppCountdown: typeof import('./src/components/AppCountdown.vue')['default']
+    BgCanvas: typeof import('./src/components/BgCanvas.vue')['default']
     ContactUs: typeof import('./src/components/ContactUs.vue')['default']
     Cursor: typeof import('./src/components/Cursor.vue')['default']
     Footer: typeof import('./src/components/Footer.vue')['default']

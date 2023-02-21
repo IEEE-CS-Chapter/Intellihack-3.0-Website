@@ -11,3 +11,9 @@ declare module 'virtual:icons/*' {
     export default component
   }
   
+
+
+  declare module '*.glb' {
+    const src: string
+    export default src
+}

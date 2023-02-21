@@ -6,14 +6,20 @@ import Components from "unplugin-vue-components/vite";
 import Icons from "unplugin-icons/vite";
 import IconsResolver from "unplugin-icons/resolver";
 import UnoCSS from "unocss/vite";
-import WebfontDownload from "vite-plugin-webfont-dl";
 import { VitePluginFonts } from 'vite-plugin-fonts'
 import { compression as Compression } from "vite-plugin-compression2";
+// @ts-ignore
+import gltf from "vite-plugin-gltf"; // (b) Vite
+
+import { draco } from "@gltf-transform/functions";
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     vue(),
+    gltf({
+      transforms: [draco()],
+    }),
     AutoImport({
       dts: true,
       imports: ["vue", "@vueuse/core", "@vueuse/head", "vue/macros"],
