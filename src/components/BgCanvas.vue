@@ -5,10 +5,9 @@
 </template>
 
 <script setup lang="ts">
-
-import * as THREE from 'three';
+import { ACESFilmicToneMapping, Group, HemisphereLight, LinearFilter, Mesh, MeshLambertMaterial, PerspectiveCamera, PlaneGeometry, Scene, SpotLight, sRGBEncoding, TextureLoader, WebGLRenderer } from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import {DRACOLoader} from 'three/examples/jsm/loaders/DRACOLoader';
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import modelUrl from "../assets/models/thinker.glb";
 const bgCanvas = ref<HTMLCanvasElement>()
@@ -18,32 +17,34 @@ onMounted(() => {
 
     const app = document.getElementById('app') as HTMLDivElement;
 
-    let renderer: THREE.WebGLRenderer, scene: THREE.Scene, camera: THREE.PerspectiveCamera;
+    let renderer: WebGLRenderer, scene: Scene, camera: PerspectiveCamera;
 
-    let spotLight: THREE.SpotLight, model: THREE.Group;
+    let spotLight: SpotLight, model: Group;
 
     init();
 
     function init() {
 
-        renderer = new THREE.WebGLRenderer({ antialias: true, canvas: bgCanvas.value });
-        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer = new WebGLRenderer({ antialias: false, canvas: bgCanvas.value });
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1));
         renderer.setSize(window.innerWidth, window.innerHeight);
-        // document.body.appendChild(renderer.domElement);
+
 
         renderer.shadowMap.enabled = true;
-        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        // optimize shadow map
+        renderer.shadowMap.autoUpdate = false;
 
-        renderer.outputEncoding = THREE.sRGBEncoding;
+        renderer.outputEncoding = sRGBEncoding;
 
-        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMapping = ACESFilmicToneMapping;
+        // optimize tone mapping for mobile devices
         renderer.toneMappingExposure = 1;
 
         renderer.setAnimationLoop(render);
 
-        scene = new THREE.Scene();
+        scene = new Scene();
 
-        camera = new THREE.PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 1000);
+        camera = new PerspectiveCamera(40, window.innerWidth / window.innerHeight, 1, 1000);
         camera.position.set(70, 50, 10);
 
         const controls = new OrbitControls(camera, renderer.domElement);
@@ -57,10 +58,10 @@ onMounted(() => {
         // disable zooming
         controls.enableZoom = false;
 
-        const ambient = new THREE.HemisphereLight(0xffffff, 0x444444, 0.05);
+        const ambient = new HemisphereLight(0xffffff, 0x444444, 0.05);
         scene.add(ambient);
 
-        const loader = new THREE.TextureLoader().setPath('/textures/');
+        const loader = new TextureLoader().setPath('/textures/');
         const filenames = ['disturb.jpg', 'colors.png', 'uv_grid_opengl.jpg'];
 
 
@@ -74,15 +75,15 @@ onMounted(() => {
             const filename = filenames[i];
 
             const texture = loader.load(filename);
-            texture.minFilter = THREE.LinearFilter;
-            texture.magFilter = THREE.LinearFilter;
-            texture.encoding = THREE.sRGBEncoding;
+            texture.minFilter = LinearFilter;
+            texture.magFilter = LinearFilter;
+            texture.encoding = sRGBEncoding;
 
             textures[filename] = texture;
 
         }
 
-        spotLight = new THREE.SpotLight(0xffffff, 5);
+        spotLight = new SpotLight(0xffffff, 5);
         spotLight.position.set(25, 75, 25);
         spotLight.angle = Math.PI / 6;
         spotLight.penumbra = 1;
@@ -101,10 +102,10 @@ onMounted(() => {
 
         //
 
-        const geometry = new THREE.PlaneGeometry(1000, 1000);
-        const material = new THREE.MeshLambertMaterial({ color: 0x808080 });
+        const geometry = new PlaneGeometry(1000, 1000);
+        const material = new MeshLambertMaterial({ color: 0x808080 });
 
-        const mesh = new THREE.Mesh(geometry, material);
+        const mesh = new Mesh(geometry, material);
         mesh.position.set(0, - 1, 0);
         mesh.rotation.x = - Math.PI / 2;
         mesh.receiveShadow = true;
@@ -143,20 +144,19 @@ onMounted(() => {
     function render() {
 
         const time = performance.now() / 3000;
+        // update shadow map
 
         spotLight.position.x = Math.cos(time) * 25;
         spotLight.position.z = Math.sin(time) * 25;
         renderer.render(scene, camera);
 
-    }
-
-    // page scrolling should rotate the model
-    app.addEventListener('scroll', (e) => {
-        let scrollTop = app.scrollTop
         if (model)
-            model.rotation.y = scrollTop * 0.001;
-    })
+            model.rotation.y = - app.scrollTop * 0.003;
 
+            renderer.shadowMap.needsUpdate = true;
+        
+
+    }
 })
 
 </script>

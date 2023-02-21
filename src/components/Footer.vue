@@ -1,6 +1,6 @@
 <template>
     <footer id="footer">
-        <p>&copy; Copyright 2023 IEEECS. All Rights Reserved </p>
+        <p>&copy; Copyright 2023 IEEECSCHAPTER of UCSC. All Rights Reserved </p>
     </footer>
 </template>
 
