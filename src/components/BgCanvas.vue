@@ -8,8 +8,11 @@
 import { ACESFilmicToneMapping, Group, HemisphereLight, LinearFilter, Mesh, MeshLambertMaterial, PerspectiveCamera, PlaneGeometry, Scene, SpotLight, sRGBEncoding, TextureLoader, WebGLRenderer } from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader';
+import {KTX2Loader} from 'three/examples/jsm/loaders/KTX2Loader'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import modelUrl from "../assets/models/thinker.glb";
+// @ts-ignore
+import {MeshoptDecoder} from "three/examples/jsm/libs/meshopt_decoder.module"
+import modelUrl from "../assets/models/the_thinker__compressed.glb";
 const bgCanvas = ref<HTMLCanvasElement>()
 
 
@@ -115,8 +118,12 @@ onMounted(() => {
 
         const gltLoader = new GLTFLoader()
         const dracoLoader = new DRACOLoader();
+        const kTx2Loader = new KTX2Loader();
+        kTx2Loader.detectSupport(renderer);
         dracoLoader.setDecoderPath('https://www.gstatic.com/draco/versioned/decoders/1.5.6/');
         gltLoader.setDRACOLoader(dracoLoader);
+        gltLoader.setKTX2Loader(kTx2Loader);
+        gltLoader.setMeshoptDecoder(MeshoptDecoder);
         gltLoader.load(modelUrl, function (geometry) {
             model = geometry.scene;
             geometry.scene.scale.set(20, 20, 20);
