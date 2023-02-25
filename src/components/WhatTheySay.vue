@@ -54,7 +54,7 @@ const sayings = [
         name: "Chathura",
         quote: "Memories fade but experience holds our hand forever.",
         position: "Finalist - IntelliHack 2019",
-        profession: "RUnners Up - IntelliHack 2.0",
+        profession: "Runners Up - IntelliHack 2.0",
         url: "/posts/Instagram post - 3.webp",
     }, {
         name: "Sahan",
@@ -212,7 +212,7 @@ function nextSaying() {
                     <div>
                         <h3>{{ name }}</h3>
                         <p>{{ quote }}</p>
-                        <span>{{ position }}</span>
+                        <!-- <span>{{ position }}</span> -->
                         <span>{{ profession }}</span>
                     </div>
                 </div>
