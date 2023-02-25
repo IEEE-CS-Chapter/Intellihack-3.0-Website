@@ -15,12 +15,6 @@
   <BgCanvas />
 </template>
 
-
-<script setup lang="ts">
-
-</script>
-
-
 <style lang="scss">
 #app {
   overflow-y: auto;

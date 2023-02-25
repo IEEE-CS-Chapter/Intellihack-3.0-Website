@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { ACESFilmicToneMapping, Color, Group, HemisphereLight, LinearFilter, Mesh, MeshLambertMaterial, MeshStandardMaterial, PerspectiveCamera, PlaneGeometry, Scene, SpotLight, sRGBEncoding, TextureLoader, WebGLRenderer } from 'three';
+import { Color, Group, HemisphereLight, Mesh, MeshLambertMaterial, PerspectiveCamera, PlaneGeometry, Scene, SpotLight, TextureLoader, WebGLRenderer } from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
@@ -14,7 +14,7 @@ import modelUrl from "../assets/models/the_thinker.glb";
 const bgCanvas = ref<HTMLCanvasElement>()
 
 
-onMounted(() => {
+function initScene() {
 
     const app = document.getElementById('app') as HTMLDivElement;
 
@@ -166,8 +166,12 @@ onMounted(() => {
 
         if (model)
             model.rotation.y = - app.scrollTop * 0.002;
-            renderer.shadowMap.needsUpdate = true;
+        renderer.shadowMap.needsUpdate = true;
     }
+}
+
+onMounted(() => {
+    initScene();
 })
 
 </script>

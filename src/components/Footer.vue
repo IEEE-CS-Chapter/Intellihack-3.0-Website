@@ -14,5 +14,9 @@
     display: grid;
     place-items: center;
     color: #fff;
+
+    p {
+        text-align: center;
+    }
 }
 </style>
