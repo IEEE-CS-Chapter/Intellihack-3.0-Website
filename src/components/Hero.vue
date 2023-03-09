@@ -11,7 +11,7 @@
             hours: 'Hours',
             minutes: 'Minutes',
             seconds: 'Seconds'
-        }" :deadline-date="new Date('2023-03-11 00:00:00')" label-color="#bbb" class="z-2" id="countdown" />
+        }" :deadline-date="new Date('2023-03-11 23:59:59')" label-color="#bbb" class="z-2" id="countdown" />
 
         <AppButton class="mt-8 z-2 cta" href="#submissions" :is-link="true" id="cta"> Register </AppButton>
         <img src="@/assets/images/logo.webp" alt="Intellihack Logo" class="hero-logo" id="logo">
